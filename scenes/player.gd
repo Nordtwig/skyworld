@@ -10,6 +10,11 @@ var target_velocity: Vector3 = Vector3.ZERO
 func _physics_process(delta) -> void:
     var direction = Vector3.ZERO
 
+    if Input.is_action_just_pressed("quit"):
+        get_tree().quit()
+    if Input.is_action_just_pressed("restart"):
+        get_tree().reload_current_scene()
+
     if Input.is_action_pressed("move_left"):
         direction.x += 1
     if Input.is_action_pressed("move_right"):
