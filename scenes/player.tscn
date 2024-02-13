@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://k0hijlb7phgh"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_s6cks"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6xevg"]
+albedo_color = Color(0.831373, 0.490196, 0.384314, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sp60i"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_fw0dc"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofdtc"]
+albedo_color = Color(0.470588, 0.258824, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cu4p1"]
+top_radius = 0.55
+bottom_radius = 0.55
+height = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygbtj"]
+albedo_color = Color(0.254902, 0.333333, 0.443137, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_f5y32"]
+top_radius = 0.51
+bottom_radius = 0.45
+height = 0.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_b8v5b"]
+radius = 0.55
+height = 2.3
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_s6cks")
+
+[node name="BodyMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1.13252, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6xevg")
+mesh = SubResource("CapsuleMesh_sp60i")
+
+[node name="EyeMesh" type="MeshInstance3D" parent="BodyMesh"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.423492, 0.650713, 0.156736)
+mesh = SubResource("SphereMesh_fw0dc")
+
+[node name="EyeMesh2" type="MeshInstance3D" parent="BodyMesh"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.423492, 0.650713, -0.135056)
+mesh = SubResource("SphereMesh_fw0dc")
+
+[node name="JacketMesh" type="MeshInstance3D" parent="BodyMesh"]
+transform = Transform3D(1, 0, 0, 0, 0.88299, 0, 0, 0, 1, 0, -0.0537987, 0)
+material_override = SubResource("StandardMaterial3D_ofdtc")
+mesh = SubResource("CylinderMesh_cu4p1")
+skeleton = NodePath("../..")
+
+[node name="PantMesh" type="MeshInstance3D" parent="BodyMesh"]
+transform = Transform3D(1, 0, 0, 0, 1.02653, 0, 0, 0, 1, 0.00518322, -0.752134, -0.00303364)
+material_override = SubResource("StandardMaterial3D_ygbtj")
+mesh = SubResource("CylinderMesh_f5y32")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_b8v5b")
