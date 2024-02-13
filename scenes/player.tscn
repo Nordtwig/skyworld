@@ -34,28 +34,35 @@ height = 2.3
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_s6cks")
+jump_force = 80.0
+gravity = 5.0
 
-[node name="BodyMesh" type="MeshInstance3D" parent="."]
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1.13252, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_6xevg")
 mesh = SubResource("CapsuleMesh_sp60i")
+skeleton = NodePath("../..")
 
-[node name="EyeMesh" type="MeshInstance3D" parent="BodyMesh"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.423492, 0.650713, 0.156736)
+[node name="EyeMesh" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1.13252, 0, -8.74228e-08, 0, -1, -0.156736, 0.736946, 0.423492)
 mesh = SubResource("SphereMesh_fw0dc")
+skeleton = NodePath("../BodyMesh")
 
-[node name="EyeMesh2" type="MeshInstance3D" parent="BodyMesh"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.423492, 0.650713, -0.135056)
+[node name="EyeMesh2" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1.13252, 0, -8.74228e-08, 0, -1, 0.135056, 0.736946, 0.423492)
 mesh = SubResource("SphereMesh_fw0dc")
+skeleton = NodePath("../BodyMesh")
 
-[node name="JacketMesh" type="MeshInstance3D" parent="BodyMesh"]
-transform = Transform3D(1, 0, 0, 0, 0.88299, 0, 0, 0, 1, 0, -0.0537987, 0)
+[node name="JacketMesh" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.0609281, 0)
 material_override = SubResource("StandardMaterial3D_ofdtc")
 mesh = SubResource("CylinderMesh_cu4p1")
 skeleton = NodePath("../..")
 
-[node name="PantMesh" type="MeshInstance3D" parent="BodyMesh"]
-transform = Transform3D(1, 0, 0, 0, 1.02653, 0, 0, 0, 1, 0.00518322, -0.752134, -0.00303364)
+[node name="PantMesh" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1.16257, 0, 1, 0, -4.37114e-08, 0.00303364, -0.851807, 0.00518322)
 material_override = SubResource("StandardMaterial3D_ygbtj")
 mesh = SubResource("CylinderMesh_f5y32")
 skeleton = NodePath("../..")

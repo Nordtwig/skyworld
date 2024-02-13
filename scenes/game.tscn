@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://coxgmwrmvp8mh"]
+[gd_scene load_steps=13 format=3 uid="uid://coxgmwrmvp8mh"]
 
 [ext_resource type="Material" uid="uid://v1wpss1xwibu" path="res://materials/dark_green_material.tres" id="1_xrp1j"]
 [ext_resource type="Material" uid="uid://shvoc1438xlq" path="res://materials/dirt_brown_material.tres" id="2_iyq40"]
@@ -29,6 +29,15 @@ size = Vector3(99, 10, 99)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_utmiw"]
 points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -0.5, 50, -50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, 50)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ripd3"]
+albedo_color = Color(0.415686, 0.415686, 0.415686, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1rb0c"]
+size = Vector3(6, 6, 6)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fc8ft"]
+points = PackedVector3Array(3, 3, 3, 3, 3, -3, -3, 3, 3, 3, -3, 3, 3, -3, -3, -3, 3, -3, -3, -3, 3, -3, -3, -3)
+
 [node name="Game" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -54,3 +63,48 @@ shape = SubResource("ConvexPolygonShape3D_utmiw")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("3_7m1p5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18409, 0)
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9482, 3.5, -29.6304)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+material_override = SubResource("StandardMaterial3D_ripd3")
+mesh = SubResource("BoxMesh_1rb0c")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.2659, 0, -6.04341)
+material_override = SubResource("StandardMaterial3D_ripd3")
+mesh = SubResource("BoxMesh_1rb0c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("ConvexPolygonShape3D_fc8ft")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.3032, 3.5, 29.0892)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
+material_override = SubResource("StandardMaterial3D_ripd3")
+mesh = SubResource("BoxMesh_1rb0c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+shape = SubResource("ConvexPolygonShape3D_fc8ft")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8565, 3.5, 34.5203)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D4"]
+material_override = SubResource("StandardMaterial3D_ripd3")
+mesh = SubResource("BoxMesh_1rb0c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D4"]
+shape = SubResource("ConvexPolygonShape3D_fc8ft")
+
+[node name="StaticBody3D5" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8165, 9.5, 30.9148)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D5"]
+material_override = SubResource("StandardMaterial3D_ripd3")
+mesh = SubResource("BoxMesh_1rb0c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D5"]
+shape = SubResource("ConvexPolygonShape3D_fc8ft")
